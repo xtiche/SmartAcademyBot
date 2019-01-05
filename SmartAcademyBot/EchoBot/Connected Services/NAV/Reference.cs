@@ -144,8 +144,7 @@ namespace NAV
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateNewRequest_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/codeunit/ACADBot", IsWrapped=true)]
     public partial class CreateNewRequest_Result
-    {
-        
+    {     
         public CreateNewRequest_Result()
         {
         }
