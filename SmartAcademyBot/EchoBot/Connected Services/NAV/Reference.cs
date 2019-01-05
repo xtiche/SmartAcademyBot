@@ -9,163 +9,237 @@
 
 namespace NAV
 {
-    using System.Runtime.Serialization;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.1")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OutofOfficeRequest", Namespace="urn:microsoft-dynamics-nav/xmlports/x52005")]
-    public partial class OutofOfficeRequest : object
-    {
-        
-        private string EntryNoField;
-        
-        private string EmployeeNoField;
-        
-        private string StartDateField;
-        
-        private string StartTimeField;
-        
-        private string EndDateField;
-        
-        private string EndTimeField;
-        
-        private string ReasonCodeField;
-        
-        private string StatusField;
-        
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false)]
-        public string EntryNo
-        {
-            get
-            {
-                return this.EntryNoField;
-            }
-            set
-            {
-                this.EntryNoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=1)]
-        public string EmployeeNo
-        {
-            get
-            {
-                return this.EmployeeNoField;
-            }
-            set
-            {
-                this.EmployeeNoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=2)]
-        public string StartDate
-        {
-            get
-            {
-                return this.StartDateField;
-            }
-            set
-            {
-                this.StartDateField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=3)]
-        public string StartTime
-        {
-            get
-            {
-                return this.StartTimeField;
-            }
-            set
-            {
-                this.StartTimeField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=4)]
-        public string EndDate
-        {
-            get
-            {
-                return this.EndDateField;
-            }
-            set
-            {
-                this.EndDateField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=5)]
-        public string EndTime
-        {
-            get
-            {
-                return this.EndTimeField;
-            }
-            set
-            {
-                this.EndTimeField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=6)]
-        public string ReasonCode
-        {
-            get
-            {
-                return this.ReasonCodeField;
-            }
-            set
-            {
-                this.ReasonCodeField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=7)]
-        public string Status
-        {
-            get
-            {
-                return this.StatusField;
-            }
-            set
-            {
-                this.StatusField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=8)]
-        public string Description
-        {
-            get
-            {
-                return this.DescriptionField;
-            }
-            set
-            {
-                this.DescriptionField = value;
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.1")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/ACADBot", ConfigurationName="NAV.ACADBot_Port")]
     public interface ACADBot_Port
     {
         
+        // CODEGEN: Создается контракт сообщения, так как операция имеет много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/codeunit/ACADBot:CreateNewRequest", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<NAV.CreateNewRequest_Result> CreateNewRequestAsync(NAV.CreateNewRequest request);
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x52005")]
+    public partial class OutofOfficeRequest
+    {
+        
+        private string entryNoField;
+        
+        private string employeeNoField;
+        
+        private System.DateTime startDateField;
+        
+        private System.DateTime startTimeField;
+        
+        private System.DateTime endDateField;
+        
+        private System.DateTime endTimeField;
+        
+        private string reasonCodeField;
+        
+        private string statusField;
+        
+        private string descriptionField;
+        
+        public OutofOfficeRequest()
+        {
+            this.startDateField = new System.DateTime(0);
+            this.startTimeField = new System.DateTime(0);
+            this.endDateField = new System.DateTime(0);
+            this.endTimeField = new System.DateTime(0);
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string EntryNo
+        {
+            get
+            {
+                return this.entryNoField;
+            }
+            set
+            {
+                this.entryNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string EmployeeNo
+        {
+            get
+            {
+                return this.employeeNoField;
+            }
+            set
+            {
+                this.employeeNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=2)]
+        public System.DateTime StartDate
+        {
+            get
+            {
+                return this.startDateField;
+            }
+            set
+            {
+                this.startDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="time", Order=3)]
+        public System.DateTime StartTime
+        {
+            get
+            {
+                return this.startTimeField;
+            }
+            set
+            {
+                this.startTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date", Order=4)]
+        public System.DateTime EndDate
+        {
+            get
+            {
+                return this.endDateField;
+            }
+            set
+            {
+                this.endDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="time", Order=5)]
+        public System.DateTime EndTime
+        {
+            get
+            {
+                return this.endTimeField;
+            }
+            set
+            {
+                this.endTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string ReasonCode
+        {
+            get
+            {
+                return this.reasonCodeField;
+            }
+            set
+            {
+                this.reasonCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public string Status
+        {
+            get
+            {
+                return this.statusField;
+            }
+            set
+            {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public string Description
+        {
+            get
+            {
+                return this.descriptionField;
+            }
+            set
+            {
+                this.descriptionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:microsoft-dynamics-nav/xmlports/x52102")]
+    public partial class Result
+    {
+        
+        private string createNoField;
+        
+        private string statusField;
+        
+        private string errorMsgField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string CreateNo
+        {
+            get
+            {
+                return this.createNoField;
+            }
+            set
+            {
+                this.createNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Status
+        {
+            get
+            {
+                return this.statusField;
+            }
+            set
+            {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string ErrorMsg
+        {
+            get
+            {
+                return this.errorMsgField;
+            }
+            set
+            {
+                this.errorMsgField = value;
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.1")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateNewRequest", WrapperNamespace="urn:microsoft-dynamics-schemas/codeunit/ACADBot", IsWrapped=true)]
     public partial class CreateNewRequest
     {
@@ -173,25 +247,36 @@ namespace NAV
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/ACADBot", Order=0)]
         public NAV.OutofOfficeRequest outofOfficeRequests;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/ACADBot", Order=1)]
+        public NAV.Result requestsOutput;
+        
         public CreateNewRequest()
         {
         }
         
-        public CreateNewRequest(NAV.OutofOfficeRequest outofOfficeRequests)
+        public CreateNewRequest(NAV.OutofOfficeRequest outofOfficeRequests, NAV.Result requestsOutput)
         {
             this.outofOfficeRequests = outofOfficeRequests;
+            this.requestsOutput = requestsOutput;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.1")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="CreateNewRequest_Result", WrapperNamespace="urn:microsoft-dynamics-schemas/codeunit/ACADBot", IsWrapped=true)]
     public partial class CreateNewRequest_Result
     {
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/ACADBot", Order=0)]
+        public NAV.Result requestsOutput;
+        
         public CreateNewRequest_Result()
         {
+        }
+        
+        public CreateNewRequest_Result(NAV.Result requestsOutput)
+        {
+            this.requestsOutput = requestsOutput;
         }
     }
     
@@ -245,17 +330,9 @@ namespace NAV
         {
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NAV.CreateNewRequest_Result> NAV.ACADBot_Port.CreateNewRequestAsync(NAV.CreateNewRequest request)
+        public System.Threading.Tasks.Task<NAV.CreateNewRequest_Result> CreateNewRequestAsync(NAV.CreateNewRequest request)
         {
             return base.Channel.CreateNewRequestAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<NAV.CreateNewRequest_Result> CreateNewRequestAsync(NAV.OutofOfficeRequest outofOfficeRequests)
-        {
-            NAV.CreateNewRequest inValue = new NAV.CreateNewRequest();
-            inValue.outofOfficeRequests = outofOfficeRequests;
-            return ((NAV.ACADBot_Port)(this)).CreateNewRequestAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

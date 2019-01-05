@@ -88,18 +88,18 @@ namespace EchoBot
                 RevocationMode = System.Security.Cryptography.X509Certificates.X509RevocationMode.NoCheck
             };
 
-            var result = await portClient.CreateNewRequestAsync(new OutofOfficeRequest()
+            var result = await portClient.CreateNewRequestAsync(new CreateNewRequest( new OutofOfficeRequest
             {
                 EntryNo = "REQ10000",
                 EmployeeNo = "LM",
-                StartDate = "10/10/2018",
-                StartTime = "09:00:00",
-                EndDate = "20/12/2018",
-                EndTime = "18:00:00",
+                StartDate = new DateTime(2020, 10, 20),
+                StartTime = new DateTime(2020, 1, 1,10,0,0),
+                EndDate = new DateTime(2020, 10, 21),
+                EndTime = new DateTime(2020, 10, 21, 18, 0, 0),
                 ReasonCode = "SICK",
                 Status = "New",
                 Description = activity.Text
-            });     
+            }, new Result()));     
         }
 
 
