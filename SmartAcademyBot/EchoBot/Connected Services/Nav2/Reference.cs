@@ -7,7 +7,7 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace NAV
+namespace Nav2
 {
     using System.Runtime.Serialization;
     
@@ -17,8 +17,6 @@ namespace NAV
     [System.Runtime.Serialization.DataContractAttribute(Name="OutofOfficeRequest", Namespace="urn:microsoft-dynamics-nav/xmlports/x52005")]
     public partial class OutofOfficeRequest : object
     {
-        
-        private string EntryNoField;
         
         private string EmployeeNoField;
         
@@ -30,26 +28,9 @@ namespace NAV
         
         private string EndTimeField;
         
-        private string ReasonCodeField;
-        
-        private string StatusField;
-        
         private string DescriptionField;
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false)]
-        public string EntryNo
-        {
-            get
-            {
-                return this.EntryNoField;
-            }
-            set
-            {
-                this.EntryNoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=1)]
+        [System.Runtime.Serialization.DataMemberAttribute(Name="EmployeeNo.", IsRequired=true, EmitDefaultValue=false)]
         public string EmployeeNo
         {
             get
@@ -62,7 +43,7 @@ namespace NAV
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=2)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false)]
         public string StartDate
         {
             get
@@ -75,7 +56,7 @@ namespace NAV
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false)]
         public string StartTime
         {
             get
@@ -88,7 +69,7 @@ namespace NAV
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=3)]
         public string EndDate
         {
             get
@@ -101,7 +82,7 @@ namespace NAV
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=5)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=4)]
         public string EndTime
         {
             get
@@ -114,33 +95,7 @@ namespace NAV
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=6)]
-        public string ReasonCode
-        {
-            get
-            {
-                return this.ReasonCodeField;
-            }
-            set
-            {
-                this.ReasonCodeField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=7)]
-        public string Status
-        {
-            get
-            {
-                return this.StatusField;
-            }
-            set
-            {
-                this.StatusField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=8)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, EmitDefaultValue=false, Order=5)]
         public string Description
         {
             get
@@ -155,12 +110,12 @@ namespace NAV
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.1")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/ACADBot", ConfigurationName="NAV.ACADBot_Port")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/ACADBot", ConfigurationName="Nav2.ACADBot_Port")]
     public interface ACADBot_Port
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:microsoft-dynamics-schemas/codeunit/ACADBot:CreateNewRequest", ReplyAction="*")]
-        System.Threading.Tasks.Task<NAV.CreateNewRequest_Result> CreateNewRequestAsync(NAV.CreateNewRequest request);
+        System.Threading.Tasks.Task<Nav2.CreateNewRequest_Result> CreateNewRequestAsync(Nav2.CreateNewRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -171,13 +126,13 @@ namespace NAV
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="urn:microsoft-dynamics-schemas/codeunit/ACADBot", Order=0)]
-        public NAV.OutofOfficeRequest outofOfficeRequests;
+        public Nav2.OutofOfficeRequest outofOfficeRequests;
         
         public CreateNewRequest()
         {
         }
         
-        public CreateNewRequest(NAV.OutofOfficeRequest outofOfficeRequests)
+        public CreateNewRequest(Nav2.OutofOfficeRequest outofOfficeRequests)
         {
             this.outofOfficeRequests = outofOfficeRequests;
         }
@@ -196,13 +151,13 @@ namespace NAV
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.1")]
-    public interface ACADBot_PortChannel : NAV.ACADBot_Port, System.ServiceModel.IClientChannel
+    public interface ACADBot_PortChannel : Nav2.ACADBot_Port, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.0.1")]
-    public partial class ACADBot_PortClient : System.ServiceModel.ClientBase<NAV.ACADBot_Port>, NAV.ACADBot_Port
+    public partial class ACADBot_PortClient : System.ServiceModel.ClientBase<Nav2.ACADBot_Port>, Nav2.ACADBot_Port
     {
         
     /// <summary>
@@ -246,16 +201,16 @@ namespace NAV
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NAV.CreateNewRequest_Result> NAV.ACADBot_Port.CreateNewRequestAsync(NAV.CreateNewRequest request)
+        System.Threading.Tasks.Task<Nav2.CreateNewRequest_Result> Nav2.ACADBot_Port.CreateNewRequestAsync(Nav2.CreateNewRequest request)
         {
             return base.Channel.CreateNewRequestAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NAV.CreateNewRequest_Result> CreateNewRequestAsync(NAV.OutofOfficeRequest outofOfficeRequests)
+        public System.Threading.Tasks.Task<Nav2.CreateNewRequest_Result> CreateNewRequestAsync(Nav2.OutofOfficeRequest outofOfficeRequests)
         {
-            NAV.CreateNewRequest inValue = new NAV.CreateNewRequest();
+            Nav2.CreateNewRequest inValue = new Nav2.CreateNewRequest();
             inValue.outofOfficeRequests = outofOfficeRequests;
-            return ((NAV.ACADBot_Port)(this)).CreateNewRequestAsync(inValue);
+            return ((Nav2.ACADBot_Port)(this)).CreateNewRequestAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -287,7 +242,8 @@ namespace NAV
         {
             if ((endpointConfiguration == EndpointConfiguration.ACADBot_Port))
             {
-                return new System.ServiceModel.EndpointAddress("https://13.94.251.189:7047/NAV05/WS/CRONUS International Ltd./Codeunit/ACADBot");
+                return new System.ServiceModel.EndpointAddress("https://navacademy2018.westeurope.cloudapp.azure.com:7047/NAV05/WS/CRONUS Interna" +
+                        "tional Ltd./Codeunit/ACADBot");
             }
             throw new System.InvalidOperationException(string.Format("Не удалось найти конечную точку с именем \"{0}\".", endpointConfiguration));
         }

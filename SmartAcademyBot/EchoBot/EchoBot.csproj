@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Connected Services\Nav2\**" />
+    <Compile Remove="Connected Services\ServiceReference1\**" />
+    <Content Remove="Connected Services\Nav2\**" />
+    <Content Remove="Connected Services\ServiceReference1\**" />
+    <EmbeddedResource Remove="Connected Services\Nav2\**" />
+    <EmbeddedResource Remove="Connected Services\ServiceReference1\**" />
+    <None Remove="Connected Services\Nav2\**" />
+    <None Remove="Connected Services\ServiceReference1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="EchoBot.bot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -5,12 +5,14 @@ using System;
 using System.Net;
 using System.Security.Principal;
 using System.ServiceModel;
+using System.ServiceModel.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
 using NAV;
+
 
 namespace EchoBot
 {
@@ -64,13 +66,12 @@ namespace EchoBot
         public async void CreateReq(Activity activity)
         {
             ACADBot_PortClient portClient = new ACADBot_PortClient();
-
+            
             var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport);
             binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Windows;
             binding.SendTimeout = new TimeSpan(0, 0, 3);
             binding.MaxBufferSize = int.MaxValue;
             binding.MaxReceivedMessageSize = int.MaxValue;
-            ServicePointManager.ServerCertificateValidationCallback += (se, cer, chain, sslerror) => { return true; };
 
             portClient.Endpoint.Binding = binding;
 
@@ -80,15 +81,23 @@ namespace EchoBot
             portClient.ClientCredentials.Windows.AllowedImpersonationLevel = TokenImpersonationLevel.Delegation;
 
 
-            //ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            portClient.ClientCredentials.ServiceCertificate.SslCertificateAuthentication =
+            new X509ServiceCertificateAuthentication()
+            {
+                CertificateValidationMode = X509CertificateValidationMode.None,
+                RevocationMode = System.Security.Cryptography.X509Certificates.X509RevocationMode.NoCheck
+            };
 
             var result = await portClient.CreateNewRequestAsync(new OutofOfficeRequest()
             {
+                EntryNo = "REQ10000",
                 EmployeeNo = "LM",
                 StartDate = "10/10/2018",
                 StartTime = "09:00:00",
                 EndDate = "20/12/2018",
                 EndTime = "18:00:00",
+                ReasonCode = "SICK",
+                Status = "New",
                 Description = activity.Text
             });     
         }
@@ -117,7 +126,6 @@ namespace EchoBot
 
                 // Echo back to the user whatever they typed.
                 var responseMessage = $"Turn {state.TurnCount}: You sent '{turnContext.Activity.Text}'\n";
-
 
                 try
                 {
