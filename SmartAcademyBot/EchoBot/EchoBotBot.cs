@@ -1,7 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
 using System.Net;
+using System.Security.Principal;
+using System.ServiceModel;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
@@ -61,9 +64,21 @@ namespace EchoBot
         public async void CreateReq(Activity activity)
         {
             ACADBot_PortClient portClient = new ACADBot_PortClient();
-            portClient.ClientCredentials.UserName.UserName = "ACADEMYNAV2018\\STUDENT05";
-            portClient.ClientCredentials.UserName.Password = "p400AxeraYoUGl4H8Wf1HskAXVTeFwFxDVJ66q1c1FE==";
-            
+
+            var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport);
+            binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Windows;
+            binding.SendTimeout = new TimeSpan(0, 0, 3);
+            binding.MaxBufferSize = int.MaxValue;
+            binding.MaxReceivedMessageSize = int.MaxValue;
+            ServicePointManager.ServerCertificateValidationCallback += (se, cer, chain, sslerror) => { return true; };
+
+            portClient.Endpoint.Binding = binding;
+
+            var credentials = new NetworkCredential("student05", "Qwerty05");
+
+            portClient.ClientCredentials.Windows.ClientCredential = credentials;
+            portClient.ClientCredentials.Windows.AllowedImpersonationLevel = TokenImpersonationLevel.Delegation;
+
 
             //ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
 
