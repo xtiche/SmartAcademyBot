@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.ServiceModel;
 using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

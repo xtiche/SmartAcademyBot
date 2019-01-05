@@ -1,15 +1,24 @@
-﻿{
-  "name": "EchoBot",
-  "services": [
-    {
-      "type": "endpoint",
-      "name": "development",
-      "endpoint": "http://localhost:3978/api/messages",
-      "appId": "",
-      "appPassword": "",
-      "id": "1"
-    }
-  ],
-  "padlock": "",
-  "version": "2.0"
+{
+    "name": "EchoBot",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:3978/api/messages",
+            "id": "1",
+            "name": "development"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "https://localhost:44380/api/messages",
+            "name": "demo",
+            "id": "44"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "path": "D:\\Проекты\\SmartAcademyBot\\SmartAcademyBot\\EchoBot\\EchoBot.bot",
+    "overrides": null
 }

@@ -1,11 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
+using NAV;
 
 namespace EchoBot
 {
@@ -56,6 +58,29 @@ namespace EchoBot
         /// <seealso cref="BotStateSet"/>
         /// <seealso cref="ConversationState"/>
         /// <seealso cref="IMiddleware"/>
+        public async void CreateReq(Activity activity)
+        {
+            ACADBot_PortClient portClient = new ACADBot_PortClient();
+            portClient.ClientCredentials.UserName.UserName = "ACADEMYNAV2018\\STUDENT05";
+            portClient.ClientCredentials.UserName.Password = "p400AxeraYoUGl4H8Wf1HskAXVTeFwFxDVJ66q1c1FE==";
+            
+
+            //ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+            var result = await portClient.CreateNewRequestAsync(new OutofOfficeRequest()
+            {
+                EmployeeNo = "LM",
+                StartDate = "10/10/2018",
+                StartTime = "09:00:00",
+                EndDate = "20/12/2018",
+                EndTime = "18:00:00",
+                Description = activity.Text
+            });     
+        }
+
+
+
+
         public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Handle Message activity type, which is the main activity type for shown within a conversational interface
@@ -77,7 +102,21 @@ namespace EchoBot
 
                 // Echo back to the user whatever they typed.
                 var responseMessage = $"Turn {state.TurnCount}: You sent '{turnContext.Activity.Text}'\n";
-                await turnContext.SendActivityAsync(responseMessage);
+
+
+                try
+                {
+                    CreateReq(turnContext.Activity);
+                    await turnContext.SendActivityAsync("OK");
+                }
+                catch
+                {
+                    await turnContext.SendActivityAsync("Error");
+                }
+                
+
+                //await turnContext.SendActivityAsync(responseMessage);
+
             }
             else
             {
